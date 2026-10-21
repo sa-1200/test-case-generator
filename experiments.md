@@ -1,94 +1,58 @@
-# Experiments and Results
+# Experiment Results — AI Test Case Generator
 
-## Project Goal
+## 1. Project Goal
 
-Evaluate whether AI-assisted software test case generation can reduce the time required to draft test cases while maintaining clear inputs, expected results, and requirement coverage. The experiments used a fictional login page and synthetic requirements.
+The goal of this project is to evaluate whether ChatGPT can help generate software test cases faster than writing them manually.
 
-## Manual Baseline
+The experiment uses a fictional login page and predefined requirements. No real or confidential data was used.
 
-* **Reported duration:** Approximately 5 minutes.
-* **Initial scenarios written:**
+## 2. Experimental Method
 
-  * Successful login.
-  * Incorrect password.
-  * Empty fields.
+Three test-case tasks were completed manually and then repeated using ChatGPT.
 
-**Review observations:**
+Time was recorded in minutes. Manual times are approximate where indicated. AI times include reviewing the generated result.
 
-* Inputs and expected results were not recorded in the submitted baseline.
-* The empty-fields scenario was not separated into empty-username and empty-password cases.
+## 3. Results
 
-These observations describe the recorded baseline; they do not establish that the original work was incorrect.
+| Test Case               |        Manual Time | ChatGPT Time |        Time Saved | Accepted Without Changes?      |
+| ----------------------- | -----------------: | -----------: | ----------------: | ------------------------------ |
+| Valid login credentials |              3 min |        2 min |             1 min | Yes                            |
+| Incorrect password      |              3 min |        1 min |             2 min | Yes                            |
+| Empty password field    |      Approx. 4 min |        1 min |     Approx. 3 min | Yes                            |
+| **Total**               | **Approx. 10 min** |    **4 min** | **Approx. 6 min** | **3 of 3 AI results accepted** |
 
-## Experiment 1: AI-Assisted Generation
+## 4. Time Comparison
 
-* **Reported duration, including review:** Approximately 2 minutes.
-* **Output:** 5 proposed test cases.
+The manual process took approximately 10 minutes in total. Using ChatGPT took 4 minutes, including reviewing each result.
 
-The cases covered successful login, incorrect password, empty username, empty password, and both fields empty.
+The approximate time reduction was 60%.
 
-## Experiment 2: Handling Ambiguity
+Calculation:
 
-* **Reported duration, including review:** Approximately 1 minute.
-* **Output:** 6 proposed test cases.
+Time reduction = (Manual time - ChatGPT time) / Manual time × 100
 
-An additional scenario considered a username containing only whitespace. Since the requirements did not define how this input should be handled, the expected result was left unresolved pending clarification.
+Time reduction = (10 - 4) / 10 × 100 = 60%
 
-## Quality Review of Experiment 2
+Because the third manual measurement was approximate, the total and percentage are also approximate.
 
-| Criterion                             |      Result |
-| ------------------------------------- | ----------: |
-| Input clarity                         |  6/6 (100%) |
-| Expected-result clarity               | 4/6 (66.7%) |
-| Cases linked to specific requirements | 5/6 (83.3%) |
+## 5. Quality Review
 
-These figures reflect the user's initial checklist review. They are not independent validation results.
+* Valid login case: accepted without changes.
+* Incorrect password case: accepted without changes.
+* Empty password case: accepted without changes.
 
-## Time Comparison
+All three AI-generated results were accepted during the user's review. This is a preliminary review, not an independent verification that every result is defect-free.
 
-| Workflow                 | Approximate duration |
-| ------------------------ | -------------------: |
-| Manual baseline          |            5 minutes |
-| AI-assisted experiment 1 |            2 minutes |
-| AI-assisted experiment 2 |             1 minute |
+## 6. Limitations
 
-Relative to the manual baseline:
+* The experiment used only three test-case tasks.
+* Manual time for the empty-password case was approximate.
+* The results reflect one person's review and a small sample.
+* The experiment does not establish that ChatGPT will always be faster or more accurate.
+* Further testing is needed with normal, messy, and difficult inputs as required by the project guide.
 
-* Experiment 1 showed an estimated time reduction of 60%.
-* Experiment 2 showed an estimated time reduction of 80%.
+## 7. Conclusion
 
-These are preliminary estimates based on user-reported times. Experiment 2 included an additional ambiguous scenario, so the tasks were not identical. The reported AI-assisted times included review, but exact start and end times were not recorded.
+In these three trials, ChatGPT reduced the recorded test-case writing time from approximately 10 minutes to 4 minutes, a reduction of about 60%. All three generated cases were accepted without changes during the review.
 
-## Required Scenario Coverage
-
-The project brief asks for comparison using normal, messy, and difficult cases, both with and without AI assistance.
-
-* **Normal case:** Successful login with valid credentials.
-* **Messy case:** A username containing only whitespace. The expected behavior requires clarification.
-* **Difficult case:** An edge case must be selected and evaluated. The existing experiments do not yet document a completed difficult-case comparison.
-
-The scenario descriptions above do not establish that all three cases have been tested in both workflows. Their results must be recorded only after the comparisons are performed.
-
-## Limitations
-
-* No functioning application was available for executing the test cases.
-* The recorded times are approximate.
-* Manual baseline inputs and expected results were not documented sufficiently for a numerical quality comparison.
-* Quality scores came from an initial review and were not independently verified.
-* The whitespace-only username behavior requires clarification.
-* The number of revisions made during each workflow was not recorded.
-* A consistent comparison across normal, messy, and difficult cases remains to be completed.
-
-## Next Steps
-
-1. Define a consistent acceptance checklist before further experiments.
-2. Review test cases against the four original requirements.
-3. Clarify whitespace handling with the hypothetical system owner.
-4. Select a difficult scenario based on the available requirements and clearly document any unresolved assumptions.
-5. If possible, repeat the manual and AI-assisted workflows using comparable tasks.
-6. Record actual start and end times, review time, number of revisions, and whether the output meets the acceptance checklist.
-7. Document the fixed instructions or assistant setup actually used for AI-assisted generation.
-
-## Conclusion
-
-The preliminary experiments suggest that AI assistance can speed up drafting and help identify ambiguous requirements. Additional validation is necessary before drawing firm conclusions about test case quality or overall productivity improvement.
+More experiments are needed before drawing broader conclusions.
